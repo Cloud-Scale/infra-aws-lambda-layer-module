@@ -46,16 +46,16 @@ install_pipenv_dependencies() {
   local dist_dir="$DIST_DIR/python"
   local dist_requirements_file="$dist_dir/requirement.txt"
   mkdir -p "$dist_dir"
-
+  echo "$dist_dir"
   pipenv lock --requirements >"$dist_requirements_file"
-  pip install --target "$dist_dir" --requirement="$dist_requirements_file"
+  pip3 install --target "$dist_dir" --requirement="$dist_requirements_file"
 }
 
 install_pip_dependencies() {
   local dist_dir="$DIST_DIR/python"
   mkdir -p "$dist_dir"
 
-  pip install --target "$dist_dir" --requirement="$PACKAGE_FILE"
+  pip3 install --target "$dist_dir" --requirement="$PACKAGE_FILE"
 }
 
 build_from_source_dir() {
