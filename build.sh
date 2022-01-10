@@ -49,6 +49,8 @@ install_pipenv_dependencies() {
   echo "$dist_dir"
   pipenv lock --requirements >"$dist_requirements_file"
   pip3 install --target "$dist_dir" --requirement="$dist_requirements_file"
+  pip uninstall dataclasses -y # fix bug for lambda deployment
+
 }
 
 install_pip_dependencies() {
@@ -56,6 +58,8 @@ install_pip_dependencies() {
   mkdir -p "$dist_dir"
 
   pip3 install --target "$dist_dir" --requirement="$PACKAGE_FILE"
+  pip uninstall dataclasses -y # fix bug for lambda deployment
+
 }
 
 build_from_source_dir() {
